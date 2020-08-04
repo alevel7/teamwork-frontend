@@ -1,0 +1,7 @@
+.imagepreview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+.imagepreview img {
+  height: 100%;
+}

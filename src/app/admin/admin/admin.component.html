@@ -1,0 +1,71 @@
+<div class="container" style="margin-top: 80px;">
+  <div class="row">
+    <form [formGroup]='form' method="POST" role="form" class="col-sm-12" (ngSubmit)="registerUser()">
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="firstName" id="firstName" aria-describedby="helpId"
+          placeholder="First Name" [ngClass]="{'is-invalid': form.get('firstName').touched && form.get('firstName').invalid}">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="lastName" id="lastName" aria-describedby="helpId"
+          placeholder="Last Name" [ngClass]="{'is-invalid': form.get('lastName').touched && form.get('lastName').invalid}">
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" formControlName="email" id="email" aria-describedby="emailHelpId"
+          placeholder="Email Address" [ngClass]="{'is-invalid': form.get('email').touched && form.get('email').invalid}">
+      </div>
+      <div class="form-group">
+        <label for="password"></label>
+        <input type="password" class="form-control" formControlName="password"
+         id="password" placeholder="Password"
+         [ngClass]="{'is-invalid': form.get('password').touched && form.get('password').invalid}">
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" formControlName="gender" value="male"> Male
+        </label>
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" formControlName="gender" value="female"> Female
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="jobRole">Job Role</label>
+        <select class="custom-select" formControlName="jobRole" id="jobRole"
+        [ngClass]="{'is-invalid': form.get('jobRole').touched && form.get('jobRole').invalid}">
+          <option selected value="faculty">faculty</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dept">Department</label>
+        <select class="form-control" formControlName="dept" id="dept">
+          <option value="accounting">accounting</option>
+          <option value="training" selected>training</option>
+          <option value="counselling">counselling</option>
+          <option value="security">security</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea class="form-control" formControlName="address" id="address" rows="3"
+        [ngClass]="{'is-invalid': form.get('address').touched && form.get('address').invalid}"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="image" class="btn btn-info">
+          <i class="fa fa-image"></i>
+          Image Upload
+        </label>
+        <input type="file" class="form-control-file" (change)="onImagePicked($event)" #filePicker
+          aria-describedby="image" id="image">
+      </div>
+      <div *ngIf="imagePreview !== '' && imagePreview" class="imagepreview">
+        <img [src]="imagePreview" [alt]="form.value.firstName" >
+      </div>
+      <button type="submit" class="btn btn-danger btn-lg" [disabled]="form.invalid">Register</button>
+    </form>
+  </div>
+
+  <br />Dirty: {{ form.dirty }} <br />Touched: {{ form.touched }}
+  <br />Valid: {{ form.valid }} <br />Value:
+  {{ form.value | json }}
+
+</div>

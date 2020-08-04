@@ -1,0 +1,34 @@
+<div class="sidenav">
+  <div class="login-main-text align-content-center">
+    <h2 class="font-weight-bold">TEAMWORK</h2>
+    <p>Collaboration is the key to success.</p>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <form #loginform="ngForm" (ngSubmit)='save(loginform)'>
+        <div class="form-group">
+          <label for='email'>Email</label>
+          <input type="text" id='email' class="form-control" name='email' placeholder="User Name"
+            [(ngModel)]=UserLogin.username>
+        </div>
+        <div class="form-group">
+          <label for='password'>Password</label>
+          <input type="password" class="form-control" name='password' placeholder="Password" id='password'
+            [(ngModel)]=UserLogin.password>
+        </div>
+        <button type="submit" class="btn form-control btn-danger " style="border-radius: 10px; height:3.5em"
+          (click)='display_loader()'>
+          <span *ngIf="!loading">Login</span>
+          <div class="spinner-border " role="status" *ngIf="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
+
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

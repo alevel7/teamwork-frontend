@@ -1,0 +1,56 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+
+    <div style="text-align: center;">
+      <form  style="background-color: blue;">
+          <label for="">Please choose a file</label>
+          <br>
+          <input type="file" name="image" (change)="onImagePicked($event)" #image  accept="image/*">
+
+        <br>
+        <div>
+          <button type="submit" (click)="postgif()" >Upload</button>
+        </div>
+      </form>
+    </div>
+</div>
+
+<div class="container x-margin ">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 m-auto">
+      <span *ngIf='form.get("article").invalid && form.get("article").touched' class="text-danger">Status cannot be
+        empty</span>
+      <form [formGroup]='form' class="form-group" name="status">
+        <div class="container">
+          <div class="row">
+            <input type="text" class="form-control col-12" placeholder="Whats on your mind" formControlName='article'>
+
+            <label for="modal" title='upload an image' class="btn btn-danger btn-sm col-3">picture</label>
+            <button type="button" class="" data-toggle="modal" data-target="#basicExampleModal" id="modal"
+              style="display: none;">
+              Launch demo modal
+            </button>
+            <button class="btn btn-danger btn-sm col-3" type="submit" (click)="postArticle()"
+             [disabled]='form.get("article").invalid && form.get("article").touched'>
+              Post
+            </button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 m-auto" *ngFor="let feed of allFeeds ">
+      <app-post [post]='feed'></app-post>
+    </div>
+  </div>
+</div>

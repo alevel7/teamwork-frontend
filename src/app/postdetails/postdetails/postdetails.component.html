@@ -1,0 +1,48 @@
+<!-- Page Content -->
+<div class="container x-margin">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 m-auto m-2">
+      <span></span>
+      <div class="jumbotron p-3">
+        <div class="font-weight-bold">
+          {{feed.article}}
+          <img src="https://myteamworkproject.herokuapp.com/images/{{feed.url}}" [alt]="feed?.title" class="card-img img-fluid"
+            title="feed?.title" *ngIf="feed.url">
+        </div>
+        <div class="d-flex justify-content-end">
+
+
+          <span class="text-muted text-right ml-2">10 days ago</span>
+        </div>
+      </div>
+      <div class="jumotron">
+        <form class="form-group d-flex" #comment="ngForm"  (ngSubmit)="addComment(comment)">
+          <input type="text" class="form-control w-75" name="comment" placeholder="Enter your comment"
+           minlength='1' [(ngModel)]="userComment.comment">
+          <button class="btn btn-outline-info btn-sm mt-0" type="submit" >Add</button>
+        </form>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          Comments
+        </div>
+
+        <!--the comment section of the post-->
+        <div *ngFor="let comment of feed.comments">
+          <div class="card-body d-flex p-2 m-1">
+            <img class="img-fluid" style="width: 45px;height:45px; border-radius: 50%;"
+            src="https://myteamworkproject.herokuapp.com/images/{{comment.userImage}}"
+              alt="">
+            <span class="ml-2">{{comment.comment}}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div>
+
+    </div>
+
+  </div>
+
+</div>
