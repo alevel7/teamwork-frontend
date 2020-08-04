@@ -16,9 +16,9 @@
         </div>
       </div>
       <div class="jumotron">
-        <form class="form-group d-flex" #comment="ngForm"  (ngSubmit)="addComment(comment)">
+        <form class="form-group d-flex" #comment="ngForm"  (ngSubmit)="addComment()">
           <input type="text" class="form-control w-75" name="comment" placeholder="Enter your comment"
-           minlength='1' [(ngModel)]="userComment.comment">
+           minlength='1' [(ngModel)]="user.comment">
           <button class="btn btn-outline-info btn-sm mt-0" type="submit" >Add</button>
         </form>
       </div>

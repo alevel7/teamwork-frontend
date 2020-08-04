@@ -6,10 +6,14 @@ export interface Post {
   comments: Comments[];
 }
 
-interface Comments {
+export interface Comments {
   comment_id: number;
   comment: string;
   article_article_id: number;
   users_user_id: number;
   createdOn: string;
+}
+
+export interface User {
+  comment?: string;
 }

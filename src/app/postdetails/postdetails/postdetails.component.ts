@@ -2,7 +2,7 @@ import { NgForm } from '@angular/forms';
 import { ArticleService } from './../../article.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Post } from './post.interface';
+import { Post, User } from './post.interface';
 
 @Component({
   selector: 'app-postdetails',
@@ -12,16 +12,16 @@ import { Post } from './post.interface';
 export class PostdetailsComponent implements OnInit {
   feed;
   userComment = NgForm;
+  user: User = {};
   constructor(private route: ActivatedRoute, private articleservice: ArticleService, private router: Router) { }
 
   ngOnInit() {
     this.retrieveComments();
   }
 
-  addComment(userComment: NgForm) {
-    console.log(userComment.value);
+  addComment() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.articleservice.addArticleComment(id, userComment.value).subscribe(
+    this.articleservice.addArticleComment(id, this.user).subscribe(
       data => {
         const username = sessionStorage.getItem('username');
         const url = this.articleservice.baseUrl + `/article/${id}`;
