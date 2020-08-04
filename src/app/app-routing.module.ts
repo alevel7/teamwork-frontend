@@ -1,3 +1,4 @@
+import { UserPostsResolver } from './userposts/userposts.resolver.service';
 import { AdminComponent } from './admin/admin/admin.component';
 import { PostDetailsGifResolver } from './postdetails/postdetails/postdetailsgif.resolver.service';
 import { PostDetailsResolver } from './postdetails/postdetails/postdetails.resolver.service';
@@ -16,5 +17,5 @@ export const appRoutes: Routes = [
   { path: 'article/:id', component: PostdetailsComponent, resolve: { resolvedData: PostDetailsResolver } },
   { path: 'gifs/:id', component: PostdetailsComponent, resolve: { resolvedData: PostDetailsGifResolver } },
   { path: 'admin', component: AdminComponent},
-  { path: 'myposts', component: UserpostsComponent}
+  { path: 'myposts', component: UserpostsComponent, resolve: { resolvedData: UserPostsResolver}}
 ];

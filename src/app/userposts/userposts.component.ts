@@ -12,10 +12,7 @@ export class UserpostsComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private articleservice: ArticleService) { }
 
   ngOnInit() {
-    this.articleservice.getUserPosts().subscribe(data => {
-      this.myposts = data.data;
-      console.log(data);
-    }, err => this.myposts = ['something went wrong']);
+    this.myposts = this.route.snapshot.data.resolvedData.data;
   }
 
 }
