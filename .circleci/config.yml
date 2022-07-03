@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: |
-            ansible-playbook main.yml -i inventory --private-key test-run.pem
+            ansible-playbook main.yml -i inventory
 
 # Sequential workflow
 workflows:
