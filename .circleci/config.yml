@@ -22,7 +22,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           # You can get this ID in the section where you registered the SSH Key
-          fingerprints: ["83:ec:d8:2c:2c:5b:5e:85:fc:62:5b:63:f3:61:5a:b7"]
+          fingerprints: ["b6:17:08:e0:62:67:46:6c:c4:3c:2c:7d:72:d8:98:e4"]
       - run:
           name: Install Ansible
           command: |
@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: |
-            ansible-playbook main.yml -i inventory
+            ansible-playbook main.yml -i inventory --private-key test-run.pem
 
 # Sequential workflow
 workflows:
