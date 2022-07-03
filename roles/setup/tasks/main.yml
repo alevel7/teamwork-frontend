@@ -15,6 +15,12 @@
   apt:
     autoremove: yes
 
+- name: install openssh
+  become: yes
+  command:  |
+    apk add --update openssh-server
+
+
 - name: "install dependencies."
   become: yes
   apt:
