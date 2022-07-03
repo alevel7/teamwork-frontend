@@ -15,16 +15,10 @@
   apt:
     autoremove: yes
 
-- name: install openssh
-  become: yes
-  command:  |
-    apk add --update openssh-server
-
-
 - name: "install dependencies."
   become: yes
   apt:
-    name: ["nodejs", "npm"]
+    name: ["nodejs", "npm", "openssh-server"]
     state: latest
     update_cache: yes
 
