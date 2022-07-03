@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: |
-            ansible-playbook -i inventory main.yml
+            ansible-playbook main.yml -i inventory
 
 # Sequential workflow
 workflows:
@@ -38,6 +38,4 @@ workflows:
   myWorkflow:
     jobs:
       # - create_infrastructure
-      - configure_infrastructure:
-        requires:
-          - create_infrastructure
+      - configure_infrastructure
